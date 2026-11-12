@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The personal website of Emapus Joseph. Get to know me, view my photos, and connect with me on WhatsApp.">
+  <meta name="theme-color" content="#101827">
+  <meta property="og:title" content="Emapus Joseph | Personal Website">
+  <meta property="og:description" content="Welcome to my personal website. Get to know me and connect with me.">
+  <title>Emapus Joseph | Personal Website</title>
+  <style>
+    :root { --bg:#0b1220; --panel:#121d30; --text:#f4f7fb; --muted:#b5c1d2; --gold:#e7bd70; --line:rgba(255,255,255,.12); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text); background:var(--bg); line-height:1.65; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1100px,92%); margin:auto; }
+    header { position:sticky; top:0; z-index:10; background:rgba(11,18,32,.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+    nav { min-height:68px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { font-weight:800; letter-spacing:.3px; }
+    .brand span { color:var(--gold); }
+    .navlinks { display:flex; gap:22px; align-items:center; color:var(--muted); font-size:.94rem; }
+    .navlinks a:hover { color:var(--gold); }
+    .menu { display:none; background:none; border:1px solid var(--line); color:white; border-radius:10px; padding:8px 12px; font-size:1rem; }
+    .hero { padding:76px 0 68px; display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:46px; }
+    .eyebrow { color:var(--gold); text-transform:uppercase; letter-spacing:2px; font-size:.78rem; font-weight:700; }
+    h1 { font-size:clamp(2.7rem,7vw,5.3rem); line-height:1.05; margin:12px 0 20px; letter-spacing:-2px; }
+    h1 span { color:var(--gold); }
+    .intro { color:var(--muted); max-width:590px; font-size:1.08rem; }
+    .actions { display:flex; gap:13px; flex-wrap:wrap; margin-top:28px; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; padding:12px 20px; border-radius:999px; font-weight:700; border:1px solid var(--line); transition:.2s; }
+    .btn.primary { background:var(--gold); color:#171717; border-color:var(--gold); }
+    .btn:hover { transform:translateY(-2px); }
+    .portrait { min-height:360px; border-radius:30px; border:1px solid var(--line); background:radial-gradient(circle at 50% 30%,#344968,#18263c 58%,#111b2d); display:grid; place-items:center; padding:24px; box-shadow:0 25px 70px rgba(0,0,0,.28); }
+    .portrait-inner { width:min(250px,75%); aspect-ratio:1; border:2px solid rgba(231,189,112,.7); border-radius:50%; display:grid; place-items:center; background:rgba(255,255,255,.05); color:var(--gold); font-size:4.2rem; font-weight:800; }
+    section { padding:68px 0; }
+    .section-head { margin-bottom:28px; }
+    h2 { font-size:clamp(1.8rem,4vw,2.6rem); margin:0 0 8px; }
+    .sub { color:var(--muted); margin:0; }
+    .about-card { padding:28px; border:1px solid var(--line); background:var(--panel); border-radius:22px; color:var(--muted); }
+    .about-card strong { color:var(--text); }
+    .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .photo { min-height:230px; border-radius:20px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(145deg,#243957,#162236); display:flex; align-items:end; position:relative; }
+    .photo img { width:100%; height:100%; min-height:230px; object-fit:cover; position:absolute; inset:0; }
+    .photo span { position:relative; z-index:1; padding:13px 16px; width:100%; background:linear-gradient(transparent,rgba(0,0,0,.72)); font-weight:650; }
+    .contact { border:1px solid rgba(231,189,112,.35); border-radius:26px; padding:34px; background:linear-gradient(135deg,#17263c,#111b2c); display:flex; justify-content:space-between; align-items:center; gap:24px; }
+    .contact p { color:var(--muted); margin:6px 0 0; }
+    footer { padding:26px 0 36px; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; text-align:center; }
+    .whatsapp { position:fixed; right:18px; bottom:18px; z-index:20; background:#25d366; color:#062b16; border-radius:999px; padding:13px 18px; font-weight:800; box-shadow:0 8px 25px rgba(0,0,0,.3); }
+    @media (max-width:760px) {
+      .hero { grid-template-columns:1fr; padding:55px 0; gap:28px; }
+      .portrait { min-height:270px; }
+      .portrait-inner { width:190px; font-size:3.2rem; }
+      .gallery { grid-template-columns:1fr 1fr; }
+      .contact { align-items:flex-start; flex-direction:column; padding:26px; }
+      .menu { display:block; }
+      .navlinks { display:none; position:absolute; left:4%; right:4%; top:68px; padding:18px; border:1px solid var(--line); border-radius:14px; background:#111b2c; flex-direction:column; align-items:flex-start; }
+      .navlinks.open { display:flex; }
+    }
+    @media (max-width:430px) { .gallery { grid-template-columns:1fr; } .photo,.photo img { min-height:260px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="#home">EMAPUS <span>JOSEPH</span></a>
+      <button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">Menu ☰</button>
+      <div class="navlinks" id="navLinks">
+        <a href="#home">Home</a><a href="#about">About me</a><a href="#photos">My photos</a><a href="#contact">Contact</a>
+        
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="wrap hero" id="home">
+      <div>
+        <div class="eyebrow">Welcome to my personal website</div>
+        <h1>Hello, I'm<br><span>Emapus Joseph.</span></h1>
+        <p class="intro">Welcome to my online space. Here you can get to know me, view some of my photos and connect with me directly on WhatsApp.</p>
+        <div class="actions">
+          <a class="btn primary" href="#about">About me</a>
+          <a class="btn" href="#photos">View my photos</a>
+        </div>
+      </div>
+      <div class="portrait" aria-label="Profile photo placeholder">
+        <div class="portrait-inner">EJ</div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">A little introduction</div><h2>About me</h2><p class="sub">Get to know the person behind this website.</p></div>
+        <div class="about-card">
+          <p><strong>My name is Emapus Joseph.</strong> Thank you for visiting my personal website. This is a place where I can share a little about myself, display my photos and stay connected with friends, family and everyone who would like to reach me.</p>
+          <p>Nationality: Ugandan<br>District: Tororo<br>sub-county: Kalait<br>Parish:Kodike<br>Zone: Omagoro B.</p>
+  <p><strong>University:</strong> Uganda Christian University</p>
+  <p><strong>Course:</strong> Information Technology</p>
+  <p><strong>Email:</strong> emapusjoseph064@gmail.com</p>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="photos">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">My moments</div><h2>My photos</h2><p class="sub">A few moments I'd like to share.</p></div>
+        <div class="gallery">
+          <div class="photo"><img src="images/Photo1.jpg" alt="Emapus Joseph photo 1" loading="lazy" onerror="this.style.display='none'"><span>My photo 1</span></div>
+          <div class="photo"><img src="images/Photo2.jpg" alt="Emapus Joseph photo 2" loading="lazy" onerror="this.style.display='none'"><span>My photo 2</span></div>
+          <div class="photo"><img src="images/Photo3.jpg" alt="Emapus Joseph photo 3" loading="lazy" onerror="this.style.display='none'"><span>My photo 3</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div><div class="eyebrow">Let's connect</div><h2>Contact me on WhatsApp</h2><p>Have a question or just want to say hello? Send me a message.</p></div>
+          <a class="btn primary" id="contactBtn" href="https://wa.me/+256756988999?text=Hello%20Emapus%20Joseph" target="_blank" rel="noopener">Chat on WhatsApp ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© <span id="year"></span> Emapus Joseph. All rights reserved.</div></footer>
+  <a class="whatsapp" id="floatWhatsApp" href="https://wa.me/+256756988999?text=Hello%20Emapus%20Joseph" target="_blank" rel="noopener" aria-label="Chat with me on WhatsApp">WhatsApp ✆</a>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+  </script>
+</body>
+</html>
